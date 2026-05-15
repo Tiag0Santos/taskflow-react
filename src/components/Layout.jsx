@@ -1,20 +1,18 @@
-import '../styles/Layout.css'
-
 function Layout({ children }) {
   return (
-    <div className="layout">
+    <div className="flex min-h-screen">
 
-      <aside className="sidebar">
-        <h1 className="logo">TaskFlow</h1>
+      <aside className="w-72 bg-slate-950 text-white p-8">
+        <h1 className="text-4xl font-bold mb-12">TaskFlow</h1>
 
-        <nav className="menu">
-          <span>📋 Tarefas</span>
-          <span>📅 Hoje</span>
-          <span>✅ Concluídas</span>
+        <nav className="flex flex-col gap-8 text-xl">
+          <a href="">📋 Tarefas</a>
+          <a href="">📅 Hoje</a>
+          <a href="">✅ Concluídas</a>
         </nav>
       </aside>
 
-      <main className="main-content">
+      <main className="flex-1 bg-slate-100 p-10">
         {children}
       </main>
 
