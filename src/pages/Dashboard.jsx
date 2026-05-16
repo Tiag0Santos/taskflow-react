@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 
 function Dashboard() {
 
-  const [tasks] = useState([
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       title: 'Estudar React',
@@ -22,6 +22,26 @@ function Dashboard() {
       status: 'Concluído'
     }
   ])
+
+  const [newTask, setNewTask] = useState('')
+
+  function addTask() {
+
+    if (!newTask.trim()) return
+
+    const newTaskObject = {
+      id: Date.now(),
+      title: newTask,
+      status: 'Pendente'
+    }
+
+    setTasks([
+      ...tasks,
+      newTaskObject
+    ])
+
+    setNewTask('')
+  }
 
   return (
     <Layout>
@@ -46,6 +66,40 @@ function Dashboard() {
           "
         >
           + Nova tarefa
+        </button>
+
+      </div>
+
+      <div className="flex gap-4 mb-10">
+
+        <input
+          type="text"
+          placeholder="Digite uma tarefa..."
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          className="
+            bg-white
+            flex-1
+            p-4
+            rounded-xl
+            outline-none
+            shadow-md
+          "
+        />
+
+        <button
+          onClick={addTask}
+          className="
+            bg-blue-600
+            hover:bg-blue-700
+            text-white
+            px-6
+            rounded-xl
+            transition
+            shadow-md
+          "
+        >
+          Adicionar
         </button>
 
       </div>
